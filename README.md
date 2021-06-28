@@ -2,32 +2,32 @@
 
 # Discord.js Akinator
 
-Create an Akinator Command for Your Discord Bot within Seconds of Installation.
+インストールして、数秒以内にはDiscord BotのAkinatorコマンドが作成できます。
 
 UPDATE 2.1.0 - Now includes support for 10 new languages for questions, including French, German, Russian, Turkish and more! Update and use the new `region` parameter to try it out!
 
-# Install Package
+# パッケージのインストール
 
-Let's take a look at how you can install this package into your Discord Bot Project.
+このパッケージをDiscord Botにインストールする方法:
 
-`npm i discord.js-akinator --save`
+`npm i discord.js-akinator-ja --save`
 
-# Example Code
+# サンプル
 
 ```js
-const Discord = require("discord.js");
+const discord = require("discord.js");
 const akinator = require("discord.js-akinator");
 const client = new Discord.Client();
 
-const PREFIX = "!";
+const prefix = "!";
 
 client.on("ready", () => {
-    console.log("Bot is Online")
+    console.log("Discord Bot is active now")
 });
 
 client.on("message", async message => {
-    if(message.content.startsWith(`${PREFIX}akinator`)) {
-        akinator(message, client, "en"); //region will default to "en" if it's not specified!
+    if(message.content.startsWith(`${prefix}akinator`)) {
+        akinator(message, client, "jp"); //日本語のアキネーター
     }
 });
 
@@ -37,7 +37,3 @@ client.login("Discord Bot Token")
 # Special Thanks
 
 - [Ashish#0540](https://github.com/3061LRTAGSPKJMORMRT) (For error handling and writing much cleaner code. Thanks!)
-
-# Need Help? Join Our Discord Server!
-
-https://discord.gg/P2g24jp
