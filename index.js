@@ -26,12 +26,12 @@ const attemptingGuess = new Set();
 module.exports = async function (message, client, region) {
     try {
         // error handling
-        if (!message) return console.log("Discord.js Akinator Error: Message was not Provided.\nNeed Help? Join Our Discord Server at 'https://discord.gg/P2g24jp'");
-        if (!client) return console.log("Discord.js Akinator Error: Discord Client was not Provided, and is needed in the new 2.0.0 Update you installed.\nNeed Help? Join Our Discord Server at 'https://discord.gg/P2g24jp'");
-        if (!region) region = "en"
-        if (!message.id || !message.channel || !message.channel.id || !message.author) throw new Error("The Message Object provided was invalid!")
-        if (!client.user.id || !client.user) throw new Error("The Discord Client Object provided was invalid!")
-        if (!message.guild) throw new Error("This cannot be used in DMs!")
+        if (!message) return console.log("Discord.js Akinator Error: メッセージ引数がundefined(nullish)です'");
+        if (!client) return console.log("Discord.js Akinator Error: Client引数がundefined(nullish)です");
+        if (!region) region = "jp"
+        if (!message.id || !message.channel || !message.channel.id || !message.author) throw new Error("メッセージ引数の値が間違っています")
+        if (!client.user.id || !client.user) throw new Error("Client引数の値が間違っています")
+        if (!message.guild) throw new Error("DMでは使えません")
        
         // defining for easy use
         let usertag = message.author.tag
@@ -41,8 +41,8 @@ module.exports = async function (message, client, region) {
         if (games.has(message.author.id)) {
             let alreadyPlayingEmbed = new Discord.MessageEmbed()
                 .setAuthor(usertag, avatar)
-                .setTitle(`❌ You're Already Playing!`)
-                .setDescription("**You're already Playing a Game of Akinator. Type `S` or `Stop` to Cancel your Game.**")
+                .setTitle(`❌あなたはすでにゲームをプレイしています`)
+                .setDescription("**あなたはすでにゲームが始まっています。`S`または`Stop`と投稿することで停止できます。**")
                 .setColor("RED")
 
             return message.channel.send({ embed: alreadyPlayingEmbed })
@@ -54,7 +54,7 @@ module.exports = async function (message, client, region) {
         let startingEmbed = new Discord.MessageEmbed()
             .setAuthor(usertag, avatar)
             .setTitle(`Starting Game...`)
-            .setDescription("**The Game will Start in About 3 Seconds...**")
+            .setDescription("**あと3秒でゲームが始まります。**")
             .setColor("RANDOM")
 
         let startingMessage = await message.channel.send({ embed: startingEmbed })
@@ -69,16 +69,16 @@ module.exports = async function (message, client, region) {
 
         let noResEmbed = new Discord.MessageEmbed()
             .setAuthor(usertag, avatar)
-            .setTitle(`Game Ended`)
-            .setDescription(`**${message.author.username}, your Game has Ended due to 1 Minute of Inactivity.**`)
+            .setTitle(`ゲーム終了`)
+            .setDescription(`**${message.author.username}、1分間操作がなかったためゲームが終了しました。**`)
             .setColor("RANDOM")
 
         let akiEmbed = new Discord.MessageEmbed()
             .setAuthor(usertag, avatar)
-            .setTitle(`Question ${aki.currentStep + 1}`)
-            .setDescription(`**Progress: 0%\n${aki.question}**`)
-            .addField("Please Type...", "**Y** or **Yes**\n**N** or **No**\n**I** or **IDK**\n**P** or **Probably**\n**PN** or **Probably Not**\n**B** or **Back**")
-            .setFooter(`You can also type "S" or "Stop" to End your Game`)
+            .setTitle(`質問 ${aki.currentStep + 1}`)
+            .setDescription(`**進行状況: 0%\n${aki.question}**`)
+            .addField("送信してください", "**y** または **Yes**(はい)\n**n** または **No**(いいえ)\n**i** または **IDK**(わからない)\n**p** または **Probably**(たぶんそう/一部そう)\n**pn** または **Probably Not**(多分違う/一部違う)\n**b** または **Back**(戻る)")
+            .setFooter(`「S」か「Stop」でゲーム終了`)
             .setColor("RANDOM")
 
         await startingMessage.delete();
@@ -110,10 +110,10 @@ module.exports = async function (message, client, region) {
 
                 let guessEmbed = new Discord.MessageEmbed()
                     .setAuthor(usertag, avatar)
-                    .setTitle(`I'm ${Math.round(aki.progress)}% Sure your Character is...`)
-                    .setDescription(`**${aki.answers[0].name}**\n${aki.answers[0].description}\n\nIs this your Character? **(Type Y/Yes or N/No)**`)
-                    .addField("Ranking", `**#${aki.answers[0].ranking}**`, true)
-                    .addField("No. of Questions", `**${aki.currentStep}**`, true)
+                    .setTitle(`私は${Math.round(aki.progress)}%完了して考えたキャラクターは...`)
+                    .setDescription(`**${aki.answers[0].name}**\n${aki.answers[0].description}\n\nこのキャラクターですか? **(y/Yes か n/No で回答)**`)
+                    .addField("ランキング", `**${aki.answers[0].ranking}位**`, true)
+                    .addField("質問数", `**${aki.currentStep}**`, true)
                     .setImage(aki.answers[0].absolute_picture_path)
                     .setColor("RANDOM")
                 await akiMessage.edit({ embed: guessEmbed });
