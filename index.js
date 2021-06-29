@@ -145,11 +145,11 @@ module.exports = async function (message, client, region) {
                         if (guessAnswer == "y" || guessAnswer == "yes") {
                             let finishedGameCorrect = new Discord.MessageEmbed()
                                 .setAuthor(usertag, avatar)
-                                .setTitle(`Well Played!`)
-                                .setDescription(`**${message.author.username}, I guessed right one more time!**`)
-                                .addField("Character", `**${aki.answers[0].name}**`, true)
-                                .addField("Ranking", `**#${aki.answers[0].ranking}**`, true)
-                                .addField("No. of Questions", `**${aki.currentStep}**`, true)
+                                .setTitle(`よくやった！`)
+                                .setDescription(`**${message.author.username}、私はもう一度正しいと思いました！**`)
+                                .addField("キャラクター", `**${aki.answers[0].name}**`, true)
+                                .addField("ランキング", `**#${aki.answers[0].ranking}**`, true)
+                                .addField("何番目の質問?", `**${aki.currentStep}**`, true)
                                 .setColor("RANDOM")
                             await akiMessage.edit({ embed: finishedGameCorrect })
                             notFinished = false;
@@ -161,8 +161,8 @@ module.exports = async function (message, client, region) {
                             if (aki.currentStep >= 78) {
                                 let finishedGameDefeated = new Discord.MessageEmbed()
                                     .setAuthor(usertag, avatar)
-                                    .setTitle(`Well Played!`)
-                                    .setDescription(`**${message.author.username}, bravo! You have defeated me...**`)
+                                    .setTitle(`よくやった！`)
+                                    .setDescription(`**${message.author.username}、ブラボー！あなたに負けてしまった...**`)
                                     .setColor("RANDOM")
                                 await akiMessage.edit({ embed: finishedGameDefeated })
                                 notFinished = false;
@@ -178,10 +178,10 @@ module.exports = async function (message, client, region) {
 
             let updatedAkiEmbed = new Discord.MessageEmbed()
                 .setAuthor(usertag, avatar)
-                .setTitle(`Question ${aki.currentStep + 1}`)
-                .setDescription(`**Progress: ${Math.round(aki.progress)}%\n${aki.question}**`)
-                .addField("Please Type...", "**Y** or **Yes**\n**N** or **No**\n**I** or **IDK**\n**P** or **Probably**\n**PN** or **Probably Not**\n**B** or **Back**")
-                .setFooter(`You can also type "S" or "Stop" to End your Game`)
+                .setTitle(`質問${aki.currentStep + 1}`)
+                .setDescription(`**進行状況${Math.round(aki.progress)}%\n${aki.question}**`)
+                .addField("送信してください", "**y** または **Yes**(はい)\n**n** または **No**(いいえ)\n**i** または **IDK**(わからない)\n**p** または **Probably**(たぶんそう/一部そう)\n**pn** または **Probably Not**(多分違う/一部違う)\n**b** または **Back**(戻る)")
+                .setFooter(`\`S\`または\`Stop\`でゲーム終了`)
                 .setColor("RANDOM")
             akiMessage.edit({ embed: updatedAkiEmbed })
 
@@ -239,10 +239,10 @@ module.exports = async function (message, client, region) {
 
                     let thinkingEmbed = new Discord.MessageEmbed()
                         .setAuthor(usertag, avatar)
-                        .setTitle(`Question ${aki.currentStep + 1}`)
-                        .setDescription(`**Progress: ${Math.round(aki.progress)}%\n${aki.question}**`)
-                        .addField("Please Type...", "**Y** or **Yes**\n**N** or **No**\n**I** or **IDK**\n**P** or **Probably**\n**PN** or **Probably Not**\n**B** or **Back**")
-                        .setFooter(`Thinking...`)
+                        .setTitle(`質問${aki.currentStep + 1}`)
+                        .setDescription(`**進行状況: ${Math.round(aki.progress)}%\n${aki.question}**`)
+                        .addField("送信してください", "**y** または **Yes**(はい)\n**n** または **No**(いいえ)\n**i** または **IDK**(わからない)\n**p** または **Probably**(たぶんそう/一部そう)\n**pn** または **Probably Not**(多分違う/一部違う)\n**b** または **Back**(戻る)")
+                        .setFooter(`考え中です...少し待ってね`)
                         .setColor("RANDOM")
                     await akiMessage.edit({ embed: thinkingEmbed })
 
@@ -258,8 +258,8 @@ module.exports = async function (message, client, region) {
                         games.delete(message.author.id)
                         let stopEmbed = new Discord.MessageEmbed()
                             .setAuthor(usertag, avatar)
-                            .setTitle(`Game Ended`)
-                            .setDescription(`**${message.author.username}, your game was successfully ended!**`)
+                            .setTitle(`ゲーム終了`)
+                            .setDescription(`**${message.author.username}ゲームを終了しました！**`)
                             .setColor("RANDOM")
                         await aki.win()
                         await akiMessage.edit({ embed: stopEmbed })
