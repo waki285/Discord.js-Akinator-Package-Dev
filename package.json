@@ -1,14 +1,14 @@
 {
-  "name": "discord.js-akinator",
-  "version": "2.0.5",
-  "description": "Create an Akinator Command for Your Discord Bot within Seconds of Installation.",
+  "name": "discord.js-akinator-jp",
+  "version": "1.0.0",
+  "description": "アキネーターのコマンドを作ることができます。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/WillTDA/Discord.js-Akinator-Package-Dev"
+    "url": "https://github.com/waki285/Discord.js-Akinator-Package-Dev"
   },
   "keywords": [
     "akinator",
