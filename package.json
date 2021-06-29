@@ -1,6 +1,6 @@
 {
   "name": "discord.js-akinator-jp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "アキネーターのコマンドを作ることができます。",
   "main": "index.js",
   "scripts": {

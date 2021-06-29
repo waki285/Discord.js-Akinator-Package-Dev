@@ -53,7 +53,7 @@ module.exports = async function (message, client, region) {
 
         let startingEmbed = new Discord.MessageEmbed()
             .setAuthor(usertag, avatar)
-            .setTitle(`Starting Game...`)
+            .setTitle(`ゲームスタート中`)
             .setDescription("**あと3秒でゲームが始まります。**")
             .setColor("RANDOM")
 
@@ -259,7 +259,7 @@ module.exports = async function (message, client, region) {
                         let stopEmbed = new Discord.MessageEmbed()
                             .setAuthor(usertag, avatar)
                             .setTitle(`ゲーム終了`)
-                            .setDescription(`**${message.author.username}ゲームを終了しました！**`)
+                            .setDescription(`**${message.author.username}、ゲームを終了しました！**`)
                             .setColor("RANDOM")
                         await aki.win()
                         await akiMessage.edit({ embed: stopEmbed })
