@@ -10,7 +10,7 @@ UPDATE 2.1.0 - Now includes support for 10 new languages for questions, includin
 
 このパッケージをDiscord Botにインストールする方法:
 
-`npm i discord.js-akinator-ja --save`
+`npm i discord.js-akinator-jp --save`
 
 # サンプル
 
